@@ -8,14 +8,24 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Button,
+  Platform,
+  Text,
+  Vibration,
+  Image,
+  View,
   SafeAreaView,
-  ScrollView,
+ScrollView,
+ImageBackground,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
-  View,
 } from 'react-native';
+import WavyHeader from './src/Components/custom';
+import Hydrate from './src/Components/hydrate';
+
+
+import Svg, { Path } from 'react-native-svg';
 
 import {
   Colors,
@@ -44,7 +54,6 @@ function Section({children, title}: SectionProps): React.JSX.Element {
       </Text>
       <Text
         style={[
-          styles.sectionDescription,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
@@ -61,54 +70,63 @@ function App(): React.JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-
+const image= 'https://example.com/my-image.png'
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+  barStyle={"light-content"}
+  backgroundColor={"#1166c1"}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      <View
+        style={styles.sectionContainer}>
+        
+       
+          {/* <Image source={{ uri: "https://reactjs.org/logo-og.png" }}  style={{width: 300, height: 300}}  /> */}
+          
+          <WavyHeader  />
+          <View style={styles.section}>
+
+            <Text  style={[
+          {
+            color: "white",
+          },
+        ]}>
+              Hidratate
+            </Text>
+            <Text style={[
+          {
+            color: "white",
+          },
+        ]}>
+              No olvides tomar agua todo el día... 
+              Cuida tu salud...
+            </Text>
+          <Hydrate/>
+          </View>
+          
+         
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  
   sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  backgroundColor:"#1166c1",
+  height: "100%"
+  
+  },
+  section:{
+    backgroundColor:"#012a6a",
+    width:"100%",
+    height:"100%",
+    top:-89
+
   },
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
   },
   highlight: {
     fontWeight: '700',
